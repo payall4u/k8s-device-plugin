@@ -191,7 +191,7 @@ func (plugin *NvidiaDevicePlugin) Register() error {
 		Endpoint:     path.Base(plugin.socket),
 		ResourceName: string(plugin.rm.Resource()),
 		Options: &pluginapi.DevicePluginOptions{
-			GetPreferredAllocationAvailable: true,
+			GetPreferredAllocationAvailable: rm.GetPreferredAllocationAvailableOption(),
 		},
 	}
 
@@ -205,7 +205,7 @@ func (plugin *NvidiaDevicePlugin) Register() error {
 // GetDevicePluginOptions returns the values of the optional settings for this plugin
 func (plugin *NvidiaDevicePlugin) GetDevicePluginOptions(context.Context, *pluginapi.Empty) (*pluginapi.DevicePluginOptions, error) {
 	options := &pluginapi.DevicePluginOptions{
-		GetPreferredAllocationAvailable: true,
+		GetPreferredAllocationAvailable: rm.GetPreferredAllocationAvailableOption(),
 	}
 	return options, nil
 }

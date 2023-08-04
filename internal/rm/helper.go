@@ -16,6 +16,8 @@
 
 package rm
 
+import "os"
+
 // int8Slice wraps an []int8 with more functions.
 type int8Slice []int8
 
@@ -35,4 +37,9 @@ func (s int8Slice) String() string {
 func uintPtr(c uint32) *uint {
 	i := uint(c)
 	return &i
+}
+
+func GetPreferredAllocationAvailableOption() bool {
+	disable := os.Getenv("disable_preferred_allocate") == "true"
+	return !disable
 }
